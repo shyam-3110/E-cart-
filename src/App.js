@@ -4,6 +4,7 @@ import './App.css';
 import Products from './components/Products';
 import Filter from './components/filter'
 import Basket from './components/basket';
+import data from './Data/db.json'
 class App extends Component {
   constructor(props){
     super(props);
@@ -15,11 +16,15 @@ class App extends Component {
     
   }
   componentWillMount(){
-    fetch("http://localhost:8000/products/").then(res => res.json()).then(data => this.setState({
-      products: data,
-      filteredsProducts: data,
-    }));
-
+    // fetch("http://localhost:8000/products/").then(res => res.json()).then(data => this.setState({
+    //   products: data,
+    //   filteredsProducts: data,
+    // }));
+    console.log(data)
+    this.setState({
+      products: data["products"],
+      filteredsProducts: data["products"],
+    });
     // if(localStorage.getItem('cartItems')){
     //   this.setState({cartItems: JSON.parse(localStorage.getItem('cartItem'))});
     // }
